@@ -29,6 +29,9 @@ dev = [
     "pytest>=8,<10",
 ]
 
+[tool.setuptools]
+py-modules = ["vision_api"]
+
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["app*"]
