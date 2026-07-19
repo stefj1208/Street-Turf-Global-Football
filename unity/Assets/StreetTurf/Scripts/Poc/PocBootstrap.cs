@@ -1,3 +1,4 @@
+using System;
 using StreetTurf.Gameplay;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -10,11 +11,37 @@ namespace StreetTurf.Poc
     /// </summary>
     public sealed class PocBootstrap : MonoBehaviour
     {
+        private string startupError;
+
         private void Start()
         {
             Application.targetFrameRate = 60;
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
-            BuildDemo();
+            try
+            {
+                BuildDemo();
+            }
+            catch (Exception exception)
+            {
+                startupError = "Le terrain n'a pas pu demarrer. Consultez la console Unity.\n" + exception.Message;
+                Debug.LogException(exception);
+            }
+        }
+
+        private void OnGUI()
+        {
+            if (string.IsNullOrEmpty(startupError))
+            {
+                return;
+            }
+
+            Rect safe = Screen.safeArea;
+            Rect panel = new Rect(safe.x + 36f, safe.center.y - 85f, safe.width - 72f, 170f);
+            GUI.Box(panel, GUIContent.none);
+            GUI.Label(
+                new Rect(panel.x + 24f, panel.y + 24f, panel.width - 48f, panel.height - 48f),
+                startupError
+            );
         }
 
         private void BuildDemo()
@@ -55,7 +82,8 @@ namespace StreetTurf.Poc
             camera.transform.position = new Vector3(0f, 9f, -13f);
             camera.transform.rotation = Quaternion.Euler(28f, 0f, 0f);
             camera.fieldOfView = 58f;
-            camera.clearFlags = CameraClearFlags.Skybox;
+            camera.clearFlags = CameraClearFlags.SolidColor;
+            camera.backgroundColor = new Color(0.03f, 0.06f, 0.12f);
             return camera;
         }
 
@@ -274,25 +302,7 @@ namespace StreetTurf.Poc
 
         private static Material CreateColorMaterial(string materialName, Color color)
         {
-            Shader shader = Shader.Find("Universal Render Pipeline/Lit");
-            if (shader == null)
-            {
-                shader = Shader.Find("Standard");
-            }
-            if (shader == null)
-            {
-                shader = Shader.Find("Sprites/Default");
-            }
-            if (shader == null)
-            {
-                throw new System.InvalidOperationException("No compatible runtime shader was found.");
-            }
-            Material material = new Material(shader) { name = materialName, color = color };
-            if (material.HasProperty("_BaseColor"))
-            {
-                material.SetColor("_BaseColor", color);
-            }
-            return material;
+            return RuntimeSurfaceMaterial.Create(materialName, color);
         }
     }
 
