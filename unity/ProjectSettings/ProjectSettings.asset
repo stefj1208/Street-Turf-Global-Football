@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!129 &1
+PlayerSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 28
+  productGUID: 936d97e7c6354c3db4de05c684bb9a98
+  AndroidProfiler: 0
+  AndroidFilterTouchesWhenObscured: 0
+  AndroidEnableSustainedPerformanceMode: 0
+  companyName: Street Turf Studio
+  productName: Street Turf Global Football
+  defaultScreenWidth: 1920
+  defaultScreenHeight: 1080
+  defaultInterfaceOrientation: 3
+  use32BitDisplayBuffer: 1
+  m_ActiveColorSpace: 0
+  applicationIdentifier:
+    Android: com.stefj1208.streetturfglobalfootball
+  bundleVersion: 0.1.0
+  AndroidBundleVersionCode: 1
+  AndroidMinSdkVersion: 26
+  AndroidTargetSdkVersion: 0
+  AndroidPreferredInstallLocation: 1
+  AndroidTargetArchitectures: 2
+  AndroidBuildApkPerCpuArchitecture: 0
+  scriptingBackend:
+    Android: 1
+  il2cppCompilerConfiguration:
+    Android: 0
+  stripEngineCode: 1
+  managedStrippingLevel:
+    Android: 1
+  activeInputHandler: 0
+  useDeterministicCompilation: 1
+

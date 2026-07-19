@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "turfId": "turf_demo_001",
+  "turfName": "Rue des Champions",
+  "status": "ready",
+  "environmentUrl": "http://localhost:8000/v1/home-turfs/turf_demo_001/environment",
+  "environmentSha256": "replace-with-the-server-hash",
+  "lengthMeters": 24.0,
+  "widthMeters": 12.0,
+  "goals": [
+    {
+      "position": { "x": 0.0, "y": 0.0, "z": -12.0 },
+      "rotation": { "x": 0.0, "y": 0.0, "z": 0.0, "w": 1.0 }
+    },
+    {
+      "position": { "x": 0.0, "y": 0.0, "z": 12.0 },
+      "rotation": { "x": 0.0, "y": 1.0, "z": 0.0, "w": 0.0 }
+    }
+  ],
+  "boundaries": [
+    { "x": -6.0, "y": 0.0, "z": -12.0 },
+    { "x": 6.0, "y": 0.0, "z": -12.0 },
+    { "x": 6.0, "y": 0.0, "z": 12.0 },
+    { "x": -6.0, "y": 0.0, "z": 12.0 }
+  ],
+  "cosmetics": {
+    "graffitiSku": "graffiti_free_01",
+    "goalNetSku": "net_classic_white",
+    "weatherSku": "weather_day_clear"
+  }
+}
