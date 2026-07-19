@@ -260,21 +260,7 @@ namespace StreetTurf.Poc
 
         private Material CreateFlatMaterial(string materialName, Color color)
         {
-            Shader shader = Shader.Find("Universal Render Pipeline/Lit");
-            if (shader == null)
-            {
-                shader = Shader.Find("Standard");
-            }
-            if (shader == null)
-            {
-                throw new InvalidOperationException("No compatible Lit shader was found.");
-            }
-
-            Material material = new Material(shader) { name = materialName, color = color };
-            if (material.HasProperty("_BaseColor"))
-            {
-                material.SetColor("_BaseColor", color);
-            }
+            Material material = RuntimeSurfaceMaterial.Create(materialName, color);
             runtimeAssets.Add(material);
             return material;
         }
